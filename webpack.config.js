@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
 module.exports = {
     mode: 'development',
     entry: {
@@ -34,17 +34,47 @@ module.exports = {
         {
             test:/\.(png|svg|jpg|jpeg|gif)$/i,
             type: 'asset/resource'
-        }
+        },
+        {
+            test: /\.html|htm$/,
+            use: ['html-loader']
+          },
     ],
 
     },
     plugins:[
         new HtmlWebpackPlugin({
-            title: 'Webpack App',
+            title: 'Financial Decisions',
             filename: 'index.html',
             template: 'src/template.html',
             favicon: './src/assets/favicon.png',
         }),
+        new HtmlWebpackPlugin({
+            template: './src/compoundCalculator.html',
+            filename: 'compoundCalculator.html', 
+          }),
+          
+          new HtmlWebpackPlugin({
+              template: './src/chapterOne.html',
+              filename: 'chapterOne.html',
+            }),
+            new HtmlWebpackPlugin({
+              template: './src/chapterTwo.html',
+              filename: 'chapterTwo.html', 
+            }),
+            new HtmlWebpackPlugin({
+                template: './src/chapterThree.html',
+                filename: 'chapterThree.html', 
+              }),      
+
+          new HtmlWebpackPlugin({
+            template: './src/chapterFour.html',
+            filename: 'chapterFour.html', 
+          }),
+          new HtmlWebpackPlugin({
+            template: './src/chapterJoke.html',
+            filename: 'chapterJoke.html',
+          }),
       
     ],
 }

@@ -528,16 +528,6 @@ function styleTagTransform(css, styleElement) {
 
 module.exports = styleTagTransform;
 
-/***/ }),
-
-/***/ "./src/assets/compoundCalculator.png":
-/*!*******************************************!*\
-  !*** ./src/assets/compoundCalculator.png ***!
-  \*******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-module.exports = __webpack_require__.p + "compoundCalculator.png";
-
 /***/ })
 
 /******/ 	});
@@ -591,18 +581,6 @@ module.exports = __webpack_require__.p + "compoundCalculator.png";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -619,26 +597,6 @@ module.exports = __webpack_require__.p + "compoundCalculator.png";
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
-/******/ 				scriptUrl = document.currentScript.src;
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl;
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nc = undefined;
@@ -653,15 +611,75 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.css */ "./src/styles/style.css");
-/* harmony import */ var _assets_compoundCalculator_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/compoundCalculator.png */ "./src/assets/compoundCalculator.png");
 
 
 
-const container = document.querySelector('.container');
-console.log('hi');
+
+const menu = document.querySelector('.menuBtn')
+const ul = document.querySelector('ul')
+
+
+menu.addEventListener('click', (element) =>{
+    ul.classList.toggle('show-menu');
+})
+
+
+// code the the calculator 
+
+// creating the compound calculator
+
+// getting values from input
+const principal = document.querySelector("#principal")
+const monthly = document.querySelector("#monthly")
+const months = document.querySelector("#months")
+const rate = document.querySelector("#rate")
+
+// setting variables for formula for better understanding 
+/*
+// P(1 + r/n)**nt + PMT * ((1+r/n)**nt -1)/ r/n
+where: 
+P = Principal
+r = rate
+n = 12 times a years
+t = time invested (in months) 
+PMT = addition monthly 
+*/
+
+function calculate(){
+    // create numbers:
+const P = parseInt(principal.value);
+const r = parseFloat(rate.value);
+const n = 12;
+const t = parseInt(months.value);
+const PMT = parseInt(monthly.value);
+const CI = P * (1 + (r / n)) ** (n * t/12) + (PMT * ((Math.pow(1 + (r / n), n * t/12) - 1)) / (r / n));
+const formattedCI = CI.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+
+const result = document.querySelector(".result")
+result.innerText  = formattedCI;
+ 
+// how much were invested 
+const investedAmount = P + t * PMT
+const formattedCIInvestedAmount = investedAmount.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+const invested = document.querySelector(".invested")
+invested.innerText = formattedCIInvestedAmount;
+// how much was the interest
+const interestAmount = CI - investedAmount
+const formattedCIinterestAmount = interestAmount.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+const interest = document.querySelector('.interest')
+interest.innerText = formattedCIinterestAmount;
+
+}
+
+const button = document.querySelector('.btn')
+
+  
+  button.addEventListener('click', ()=>{
+    calculate()    
+})
 
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle5f0753e5ede7abec0b21.js.map
+//# sourceMappingURL=bundle7aafa32ef288270669d3.js.map
