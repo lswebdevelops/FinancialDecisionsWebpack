@@ -27,7 +27,7 @@ module.exports = {
     module:{
         rules:[
             {
-            test: /\.scss$/,
+            test: /\.css$/,
             use: ['style-loader' , 'css-loader', 'sass-loader']
             ,
         },
@@ -43,8 +43,8 @@ module.exports = {
             title: 'Webpack App',
             filename: 'index.html',
             template: 'src/template.html',
-
+            favicon: './src/assets/favicon.png',
         }),
-        new BundleAnalyzerPlugin()
+      
     ],
 }

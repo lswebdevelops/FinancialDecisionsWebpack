@@ -1,10 +1,5 @@
-import generateJoke from "./generateJoke"
-import './styles/main.scss'
-import laughing from './assets/laughing.svg'
+import './styles/style.css'
+import compoundCalculatorImg from './assets/compoundCalculator.png'
 
-const laughImg = document.getElementById('laughImg')
-laughImg.src  = laughing
-
-const jokeBtn = document.getElementById('jokeBtn')
-jokeBtn.addEventListener('click' , generateJoke)
-generateJoke()
+const container = document.querySelector('.container');
+console.log('hi');

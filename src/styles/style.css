@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    
+}
+
+header {
+    background-color: #303030;
+    color: white;
+    padding: 20px;
+    text-align: left;
+}
+header h1{
+    text-align: center;
+}
+
+nav {
+    display: inline-block;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    margin: 20px;
+    padding: 10px;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+div h1{
+    margin-left: 8px;
+}
+ul {
+    list-style: disc;
+    margin-left: 30px;
+}
+
+footer {
+    background-color: #303030;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.footerComp{
+    text-align: left;
+    margin-left: 10%;
+  }
+img{
+    max-height: 550px;
+    border-radius: 3%;
+}
+a{
+    text-decoration: none;
+    color:azure;
+  }
+a:hover{
+  text-decoration-line: underline;  
+}
+main{
+    background-color: azure;
+}
+body{
+    background-color: #303030;
+}
+.menuBtn {
+    display: block;
+    color: azure;
+    width: 2.5rem;
+    font-size: large;
+    height: 2.5rem;
+    background-color: #303030;
+}
+
+.navul {
+    display: none;
+}
+.show-menu {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    gap: 5px;
+
+}
+
+.upperMenu{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media (min-width: 756px) {
+    .menuBtn {
+        display: none;
+    }
+    .navul  {
+        display: block;
+    }
+    
+    nav {
+        text-align: left;
+    }
+    
+    nav li {
+        display: inline-block;
+        margin:0 5px 0 10px;
+    }
+     
+   
+ 
+}
